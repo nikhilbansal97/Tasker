@@ -53,4 +53,11 @@ class AddTaskViewModel @Inject constructor(
       _saveStatusLiveData.value = id != -1
     }
   }
+
+  fun deleteTask(task: Task) {
+    viewModelScope.launch {
+      taskRepository.deleteTask(task)
+      _saveStatusLiveData.value = true
+    }
+  }
 }

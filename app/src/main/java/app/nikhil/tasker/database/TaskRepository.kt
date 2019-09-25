@@ -24,4 +24,8 @@ class TaskRepository @Inject constructor(private val taskDao: TaskDao) {
       taskDao.updateTask(task)
     }
   }
+
+  suspend fun deleteTask(task: Task) {
+    withContext(Dispatchers.IO) { taskDao.deleteTask(task) }
+  }
 }

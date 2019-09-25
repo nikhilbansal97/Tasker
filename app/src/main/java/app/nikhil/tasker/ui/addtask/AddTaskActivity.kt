@@ -3,6 +3,7 @@ package app.nikhil.tasker.ui.addtask
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import app.nikhil.tasker.R
 import app.nikhil.tasker.R.string
@@ -47,10 +48,20 @@ class AddTaskActivity : BaseActivity<ActivityAddTaskBinding, AddTaskViewModel>()
         text = context.getString(string.update)
         setOnClickListener { viewModel.updateTask(task) }
       }
+      binding.btnDelete.setOnClickListener { showDeleteConfirmationDialog(task) }
       binding.btnDelete.visibility = View.VISIBLE
       viewModel.taskTitle = task.title
       viewModel.taskDescription = task.description
     }
     binding.btnClose.setOnClickListener { finish() }
+  }
+
+  private fun showDeleteConfirmationDialog(task: Task) {
+    AlertDialog.Builder(this)
+      .setTitle(getString(string.confirm))
+      .setMessage(getString(string.delete_confirm_message))
+      .setPositiveButton(getString(string.yes)) { _, _ -> viewModel.deleteTask(task) }
+      .setNegativeButton(getString(string.no)) { dialog, _ -> dialog.dismiss() }
+      .show()
   }
 }

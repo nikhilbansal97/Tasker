@@ -2,6 +2,7 @@ package app.nikhil.tasker.database.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
@@ -18,4 +19,7 @@ interface TaskDao {
 
   @Update
   suspend fun updateTask(task: Task): Int
+
+  @Delete
+  fun deleteTask(task: Task)
 }
