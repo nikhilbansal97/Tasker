@@ -1,6 +1,7 @@
 package app.nikhil.tasker.ui.base
 
 import android.os.Bundle
+import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -15,7 +16,8 @@ abstract class BaseActivity<B : ViewDataBinding, VM : ViewModel> : DaggerAppComp
 
   abstract fun getLayoutId(): Int
 
-  @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
+  @Inject
+  lateinit var viewModelFactory: ViewModelProvider.Factory
 
   lateinit var viewModel: VM
   lateinit var binding: B
@@ -27,5 +29,6 @@ abstract class BaseActivity<B : ViewDataBinding, VM : ViewModel> : DaggerAppComp
 
   private fun initUI() {
     viewModel = ViewModelProviders.of(this, viewModelFactory).get(getViewModelClass())
+    binding = DataBindingUtil.setContentView(this, getLayoutId())
   }
 }

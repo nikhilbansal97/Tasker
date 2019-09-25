@@ -1,7 +1,6 @@
 package app.nikhil.tasker.ui.tasklist
 
-import androidx.lifecycle.ViewModel
+import app.nikhil.tasker.ui.base.BaseViewModel
+import javax.inject.Inject
 
-class TaskListViewModel : ViewModel() {
-
-}
+class TaskListViewModel @Inject constructor() : BaseViewModel()

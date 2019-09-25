@@ -14,7 +14,6 @@ import javax.inject.Singleton
 class AppModule {
 
   @Provides
-  @Singleton
   @ApplicationContext
   fun provideContext(taskerApplication: TaskerApplication): Context = taskerApplication
 }

@@ -2,21 +2,21 @@ package app.nikhil.tasker.ui.tasklist
 
 import android.content.Context
 import android.os.Bundle
-import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
-import app.nikhil.tasker.R.layout
-import dagger.android.AndroidInjection
-import dagger.android.support.DaggerAppCompatActivity
+import app.nikhil.tasker.R
+import app.nikhil.tasker.databinding.ActivityTaskListBinding
+import app.nikhil.tasker.ui.base.BaseActivity
 import javax.inject.Inject
 
-class TaskListActivity : DaggerAppCompatActivity() {
+class TaskListActivity : BaseActivity<ActivityTaskListBinding, TaskListViewModel>() {
 
-  @Inject lateinit var appContext: Context
-  @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
+  override fun getViewModelClass(): Class<TaskListViewModel> = TaskListViewModel::class.java
+
+  override fun getLayoutId(): Int = R.layout.activity_task_list
+
+  @Inject
+  lateinit var appContext: Context
 
   override fun onCreate(savedInstanceState: Bundle?) {
-    AndroidInjection.inject(this)
     super.onCreate(savedInstanceState)
-    setContentView(layout.activity_task_list)
   }
 }
