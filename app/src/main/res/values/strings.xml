@@ -1,3 +1,7 @@
 <resources>
   <string name="app_name">Tasker</string>
+  <string name="title">Title</string>
+  <string name="description">Description</string>
+  <string name="save">SAVE</string>
+  <string name="update">UPDATE</string>
 </resources>

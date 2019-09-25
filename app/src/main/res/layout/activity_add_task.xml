@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <data>
+    <variable
+      name="viewModel"
+      type="app.nikhil.tasker.ui.addtask.AddTaskViewModel" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appBackground"
+    android:orientation="vertical"
+    android:padding="@dimen/dimen_12dp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/btnClose"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      android:layout_width="@dimen/dimen_36dp"
+      android:layout_height="@dimen/dimen_36dp"
+      android:rotation="45"
+      app:srcCompat="@drawable/ic_add_black"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+      android:id="@+id/btnDelete"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      android:layout_width="@dimen/dimen_24dp"
+      android:layout_height="@dimen/dimen_24dp"
+      app:srcCompat="@drawable/ic_delete"
+      android:visibility="gone"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+      android:id="@+id/tvInputTitle"
+      style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/dimen_12dp"
+      android:hint="@string/title"
+      app:layout_constraintTop_toBottomOf="@id/btnClose">
+
+      <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/tvEditTitle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@={viewModel.taskTitle}"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+      android:id="@+id/tvInputDescription"
+      style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_marginTop="@dimen/dimen_12dp"
+      android:layout_marginBottom="@dimen/dimen_12dp"
+      android:hint="@string/description"
+      app:layout_constraintBottom_toTopOf="@id/btnSaveTask"
+      app:layout_constraintTop_toBottomOf="@id/tvInputTitle">
+
+      <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/tvEditDescription"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="top"
+        android:text="@={viewModel.taskDescription}"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+      android:id="@+id/btnSaveTask"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="@dimen/dimen_12dp"
+      android:text="@string/save"
+      app:layout_constraintBottom_toBottomOf="parent" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
