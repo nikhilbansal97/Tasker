@@ -2,6 +2,7 @@ package app.nikhil.tasker.ui.tasklist
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import app.nikhil.tasker.R
@@ -26,10 +27,19 @@ class TaskListActivity : BaseActivity<ActivityTaskListBinding, TaskListViewModel
 
   private fun addObservers() {
     viewModel.tasksListLiveData.observe(this, Observer {
-      it?.let { tasksList ->
-        (binding.rvTasksList.adapter as TaskListAdapter).updateTasksList(tasksList)
-      }
+      it?.let { tasksList -> updateUI(tasksList) }
     })
+  }
+
+  private fun updateUI(tasksList: List<Task>) {
+    if (tasksList.isEmpty()) {
+      binding.rvTasksList.visibility = View.GONE
+      binding.noTasks.visibility = View.VISIBLE
+    } else {
+      binding.rvTasksList.visibility = View.VISIBLE
+      binding.noTasks.visibility = View.GONE
+      (binding.rvTasksList.adapter as TaskListAdapter).updateTasksList(tasksList)
+    }
   }
 
   private fun navigateToAddTaskActivity(task: Task? = null) {
