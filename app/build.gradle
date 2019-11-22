@@ -38,19 +38,14 @@ dependencies {
 
   // Dagger
   api 'com.google.dagger:dagger:2.25.2'
-  api 'com.google.dagger:dagger-android:2.25.2'
-  api 'com.google.dagger:dagger-android-support:2.25.2'
   kapt 'com.google.dagger:dagger-compiler:2.25.2'
-  kapt 'com.google.dagger:dagger-android-processor:2.25.2'
-  kaptTest 'com.google.dagger:dagger-compiler:2.25.2'
-  kaptAndroidTest 'com.google.dagger:dagger-compiler:2.25.2'
 
   // Architecture Components
   implementation "androidx.lifecycle:lifecycle-extensions:2.1.0"
   implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0"
-  implementation "androidx.room:room-runtime:2.2.1"
-  implementation "androidx.room:room-ktx:2.2.1"
-  kapt "androidx.room:room-compiler:2.2.1"
+  implementation "androidx.room:room-runtime:2.2.2"
+  implementation "androidx.room:room-ktx:2.2.2"
+  kapt "androidx.room:room-compiler:2.2.2"
 
   // Timber
   implementation 'com.jakewharton.timber:timber:4.7.1'

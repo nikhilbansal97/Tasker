@@ -17,6 +17,7 @@ import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
 import app.nikhil.tasker.R
+import app.nikhil.tasker.TaskerApplication
 import app.nikhil.tasker.database.entities.Task
 import app.nikhil.tasker.databinding.ActivityTaskListBinding
 import app.nikhil.tasker.ui.addtask.AddTaskActivity
@@ -37,7 +38,9 @@ class TaskListActivity : BaseActivity<ActivityTaskListBinding, TaskListViewModel
   override fun getLayoutId(): Int = R.layout.activity_task_list
 
   override fun onCreate(savedInstanceState: Bundle?) {
+    initDagger(this)
     super.onCreate(savedInstanceState)
+
     initUi()
     addObservers()
     //    initWorkManager()

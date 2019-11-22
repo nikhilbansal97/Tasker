@@ -9,6 +9,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
 
+/*
 @Module
 abstract class WorkerBindingModule {
 
@@ -16,4 +17,4 @@ abstract class WorkerBindingModule {
   @IntoMap
   @WorkerKey(DatabaseSyncWorker::class)
   abstract fun bindDatabaseSyncWorker(databaseSyncWorker: DatabaseSyncWorker): CoroutineWorker
-}
+}*/

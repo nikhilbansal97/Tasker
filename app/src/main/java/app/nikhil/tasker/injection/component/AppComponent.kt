@@ -1,34 +1,31 @@
 package app.nikhil.tasker.injection.component
 
 import app.nikhil.tasker.TaskerApplication
-import app.nikhil.tasker.injection.module.ActivityBindingModule
 import app.nikhil.tasker.injection.module.AppModule
 import app.nikhil.tasker.injection.module.RepositoryModule
 import app.nikhil.tasker.injection.module.ViewModelBindingModule
-import app.nikhil.tasker.ui.daggertest.DaggerTestActivity
-import app.nikhil.tasker.ui.daggertest.DaggerTestViewModel
-import app.nikhil.tasker.work.DatabaseSyncWorker
+import app.nikhil.tasker.ui.addtask.AddTaskActivity
+import app.nikhil.tasker.ui.tasklist.TaskListActivity
+import dagger.BindsInstance
 import dagger.Component
-import dagger.android.AndroidInjectionModule
-import dagger.android.AndroidInjector
 import javax.inject.Singleton
 
 @Singleton
 @Component(
   modules = [
-    AndroidInjectionModule::class,
     AppModule::class,
-    ActivityBindingModule::class,
-    ViewModelBindingModule::class,
-    RepositoryModule::class
+    RepositoryModule::class,
+    ViewModelBindingModule::class
   ]
 )
-interface AppComponent : AndroidInjector<TaskerApplication> {
+interface AppComponent {
 
-  fun inject(target: DatabaseSyncWorker)
-  fun inject(target: DaggerTestViewModel)
-  fun inject(target: DaggerTestActivity)
+  fun inject(target: TaskListActivity)
+  fun inject(target: AddTaskActivity)
 
-  @Component.Factory
-  abstract class Factory : AndroidInjector.Factory<TaskerApplication>
+  @Component.Builder
+  interface Builder {
+    fun application(@BindsInstance taskerApplication: TaskerApplication): Builder
+    fun build(): AppComponent
+  }
 }
