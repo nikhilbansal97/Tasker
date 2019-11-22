@@ -27,13 +27,9 @@ class AddTaskActivity : BaseActivity<ActivityAddTaskBinding, AddTaskViewModel>()
   private fun addObservers() {
     viewModel.saveStatusLiveData.observe(this, Observer {
       it?.let { isSaved ->
-        when (isSaved) {
-          true -> {
-            finish()
-          }
-          false -> {
-            Toast.makeText(this, "Unable to Save", Toast.LENGTH_SHORT).show()
-          }
+        when {
+          isSaved -> finish()
+          else -> Toast.makeText(this, "Unable to Save", Toast.LENGTH_SHORT).show()
         }
       }
     })
