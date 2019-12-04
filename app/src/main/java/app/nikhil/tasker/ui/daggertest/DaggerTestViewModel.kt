@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import app.nikhil.tasker.database.TaskRepository
 import javax.inject.Inject
 
-class DaggerTestViewModel : ViewModel() {
+class DaggerTestViewModel @Inject constructor(): ViewModel() {
 
   @Inject
   lateinit var repository: TaskRepository
