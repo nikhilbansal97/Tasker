@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import app.nikhil.tasker.injection.multibinding.ViewModelKey
 import app.nikhil.tasker.ui.addtask.AddTaskViewModel
-import app.nikhil.tasker.ui.daggertest.DaggerTestViewModel
 import app.nikhil.tasker.ui.tasklist.TaskListViewModel
 import app.nikhil.tasker.utils.ViewModelFactory
 import dagger.Binds
@@ -23,11 +22,6 @@ abstract class ViewModelBindingModule {
   @IntoMap
   @ViewModelKey(AddTaskViewModel::class)
   abstract fun bindAddTaskViewModel(addTaskViewModel: AddTaskViewModel): ViewModel
-
-  @Binds
-  @IntoMap
-  @ViewModelKey(DaggerTestViewModel::class)
-  abstract fun bindDaggerTestViewModel(daggerTestViewModel: DaggerTestViewModel): ViewModel
 
   @Binds
   abstract fun bindViewModelFactory(viewModelFactory: ViewModelFactory): ViewModelProvider.Factory
